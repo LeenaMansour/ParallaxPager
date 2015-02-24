@@ -153,12 +153,15 @@ public class ParallaxContainer extends FrameLayout implements ViewPager.OnPageCh
     for (View view : parallaxViews) {
       tag = (ParallaxViewTag) view.getTag(R.id.parallax_view_tag);
       if (tag == null) { continue; }
+        int layoutVisibility = view.getVisibility();
 
       if ((pageIndex == tag.index - 1
           || (isLooping && (pageIndex == tag.index - 1 + pageCount)))
           && containerWidth != 0) {
-        // make visible
-        view.setVisibility(VISIBLE);
+        // make visible if layout did not specify it to be invisible
+        if (layoutVisibility != View.INVISIBLE) {
+            view.setVisibility(VISIBLE);
+        }
 
         // slide in from right
         view.setTranslationX((containerWidth - offsetPixels) * tag.xIn);
@@ -169,8 +172,10 @@ public class ParallaxContainer extends FrameLayout implements ViewPager.OnPageCh
         // fade in
         view.setAlpha(1.0f - (containerWidth - offsetPixels) * tag.alphaIn / containerWidth);
       } else if (pageIndex == tag.index) {
-        // make visible
-        view.setVisibility(VISIBLE);
+          // make visible if layout did not specify it to be invisible
+          if (layoutVisibility != View.INVISIBLE) {
+              view.setVisibility(VISIBLE);
+          }
 
         // slide out to left
         view.setTranslationX(0 - offsetPixels * tag.xOut);
@@ -181,7 +186,10 @@ public class ParallaxContainer extends FrameLayout implements ViewPager.OnPageCh
         // fade out
         view.setAlpha(1.0f - offsetPixels * tag.alphaOut / containerWidth);
       } else {
-        view.setVisibility(GONE);
+          // Hide unless already set to be invisible
+          if (layoutVisibility != View.INVISIBLE) {
+              view.setVisibility(GONE);
+          }
       }
     }
 

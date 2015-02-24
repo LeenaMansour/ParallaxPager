@@ -49,48 +49,48 @@ dependencies {
   compile 'com.android.support:support-v4:21.0.3'
 }
 
-uploadArchives {
-  repositories.mavenDeployer {
-    beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-    repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
-      authentication(userName: sonatypeUsername, password: sonatypePassword)
-    }
-
-    snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots/') {
-      authentication(userName: sonatypeUsername, password: sonatypePassword)
-    }
-
-    pom {
-      project {
-        name 'ParallaxPager'
-        packaging 'aar'
-
-        description 'Add some depth to your Android scrolling.'
-        url 'https://github.com/prolificinteractive/ParallaxPager'
-
-        scm {
-          url 'scm:git@github.com:prolificinteractive/ParallaxPager.git'
-          connection 'scm:git@github.com:prolificinteractive/ParallaxPager.git'
-          developerConnection 'scm:git@github.com:prolificinteractive/ParallaxPager.git'
-        }
-
-        licenses {
-          license {
-            name 'The Apache Software License, Version 2.0'
-            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-            distribution 'repo'
-          }
-        }
-
-        developers {
-          developer {
-            id 'prolificinteractive'
-            name 'Prolific Interactive'
-            email 'android@prolificinteractive.com'
-          }
-        }
-      }
-    }
-  }
-}
+//uploadArchives {
+//  repositories.mavenDeployer {
+//    beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+//
+//    repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
+//      authentication(userName: sonatypeUsername, password: sonatypePassword)
+//    }
+//
+//    snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots/') {
+//      authentication(userName: sonatypeUsername, password: sonatypePassword)
+//    }
+//
+//    pom {
+//      project {
+//        name 'ParallaxPager'
+//        packaging 'aar'
+//
+//        description 'Add some depth to your Android scrolling.'
+//        url 'https://github.com/prolificinteractive/ParallaxPager'
+//
+//        scm {
+//          url 'scm:git@github.com:prolificinteractive/ParallaxPager.git'
+//          connection 'scm:git@github.com:prolificinteractive/ParallaxPager.git'
+//          developerConnection 'scm:git@github.com:prolificinteractive/ParallaxPager.git'
+//        }
+//
+//        licenses {
+//          license {
+//            name 'The Apache Software License, Version 2.0'
+//            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//            distribution 'repo'
+//          }
+//        }
+//
+//        developers {
+//          developer {
+//            id 'prolificinteractive'
+//            name 'Prolific Interactive'
+//            email 'android@prolificinteractive.com'
+//          }
+//        }
+//      }
+//    }
+//  }
+//}
